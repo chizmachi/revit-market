@@ -19,14 +19,15 @@
         .header { text-align: center; margin-bottom: 24px; }
         .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
         .store-name { font-size: 24px; font-weight: bold; margin: 8px 0; }
+        .store-desc { color: var(--tg-theme-hint-color); }
         .product-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .product-card { background-color: var(--tg-theme-secondary-bg-color); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; }
         .product-image { width: 100%; aspect-ratio: 1; border-radius: 8px; object-fit: cover; }
-        .btn { display: block; width: 100%; padding: 8px 0; border-radius: 8px; text-align: center; text-decoration: none; font-size: 14px; margin-top: 4px; border: none; cursor: pointer; font-family: inherit; }
+        .product-title { font-size: 14px; margin: 8px 0 4px 0; font-weight: bold; }
+        .product-price { font-size: 14px; font-weight: bold; margin-bottom: 8px; }
+        .btn { display: block; width: 100%; padding: 8px 0; border-radius: 8px; text-align: center; text-decoration: none; font-size: 14px; margin-top: 4px; border: none; cursor: pointer; }
         .btn-buy { background-color: var(--tg-theme-button-color); color: white; }
         .btn-download { background-color: #4CAF50; color: white; }
-        .product-title { font-weight: bold; margin-top: 8px; font-size: 14px; min-height: 34px; }
-        .product-price { color: var(--tg-theme-link-color); font-weight: bold; margin-bottom: 8px; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -37,9 +38,6 @@
     </div>
     <div class="product-list" id="productList"></div>
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-
         const products = [
             {
                 id: 1,
@@ -90,9 +88,14 @@
                 '<div class="product-title">' + p.name + '</div>' +
                 '<div class="product-price">' + p.price + '</div>' +
                 '<a href="' + p.mod + '" class="btn btn-download">Modelni yuklash</a>' +
-                '<button onclick="tg.openTelegramLink(\\'' + p.link + '\\')" class="btn btn-buy">Sotib olish</button>';
+                '<button onclick="window.Telegram.WebApp.openTelegramLink(\\'' + p.link + '\\')" class="btn btn-buy">Sotib olish</button>';
             list.appendChild(card);
         });
+        
+        try {
+            const tg = window.Telegram.WebApp;
+            if (tg && tg.expand) { tg.expand(); }
+        } catch (e) {}
     </script>
 </body>
 </html>
