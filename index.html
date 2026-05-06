@@ -88,7 +88,7 @@
                 '<div class="product-title">' + p.name + '</div>' +
                 '<div class="product-price">' + p.price + '</div>' +
                 '<a href="' + p.mod + '" class="btn btn-download">Modelni yuklash</a>' +
-                '<button onclick="window.Telegram.WebApp.openTelegramLink(\\'' + p.link + '\\')" class="btn btn-buy">Sotib olish</button>';
+                '<button onclick=\'window.Telegram.WebApp.openTelegramLink("' + p.link + '")\' class="btn btn-buy">Sotib olish</button>';
             list.appendChild(card);
         });
         
