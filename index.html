@@ -1,4 +1,32 @@
 <!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revit 3ddd</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --tg-theme-bg-color: #ffffff;
+            --tg-theme-text-color: #222222;
+            --tg-theme-hint-color: #999999;
+            --tg-theme-link-color: #2481cc;
+            --tg-theme-button-color: #2481cc;
+            --tg-theme-button-text-color: #ffffff;
+            --tg-theme-secondary-bg-color: #efeff3;
+        }
+        body { font-family: sans-serif; background-color: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); margin: 0; padding: 16px; }
+        .header { text-align: center; margin-bottom: 24px; }
+        .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+        .store-name { font-size: 24px; font-weight: bold; margin: 8px 0; }
+        .product-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .product-card { background-color: var(--tg-theme-secondary-bg-color); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; }
+        .product-image { width: 100%; aspect-ratio: 1; border-radius: 8px; object-fit: cover; }
+        .btn { display: block; width: 100%; padding: 8px 0; border-radius: 8px; text-align: center; text-decoration: none; font-size: 14px; margin-top: 4px; border: none; cursor: pointer; font-family: inherit; }
+        .btn-buy { background-color: var(--tg-theme-button-color); color: white; }
+        .btn-download { background-color: #4CAF50; color: white; }
+        .product-title { font-weight: bold; margin-top: 8px; font-size: 14px; min-height: 34px; }
+        .product-price { color: var(--tg-theme-link-color); font-weight: bold; margin-bottom: 8px; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -9,6 +37,9 @@
     </div>
     <div class="product-list" id="productList"></div>
     <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
         const products = [
             {
                 id: 1,
@@ -45,7 +76,6 @@
             {
                 id: 5,
                 name: "ovqatlanish uchun mebel",
-                
                 price: "$ bebaho",
                 image: "photo_2026-05-06_15-42-07.jpg",
                 link: "https://t.me/Revit_3ddd",
@@ -60,12 +90,9 @@
                 '<div class="product-title">' + p.name + '</div>' +
                 '<div class="product-price">' + p.price + '</div>' +
                 '<a href="' + p.mod + '" class="btn btn-download">Modelni yuklash</a>' +
-                '<button onclick="tg.openTelegramLink(\'' + p.link + '\')" class="btn btn-buy">Sotib olish</button>';
+                '<button onclick="tg.openTelegramLink(\\'' + p.link + '\\')" class="btn btn-buy">Sotib olish</button>';
             list.appendChild(card);
         });
-        const tg = window.Telegram.WebApp;
-        tg.expand();
     </script>
 </body>
 </html>
-
