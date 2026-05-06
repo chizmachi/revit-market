@@ -15,82 +15,68 @@
             --tg-theme-button-text-color: #ffffff;
             --tg-theme-secondary-bg-color: #efeff3;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--tg-theme-bg-color);
-            color: var(--tg-theme-text-color);
-            margin: 0;
-            padding: 16px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 16px;
-            object-fit: cover;
-        }
-        .product-list {
-            display: grid;
-            gap: 16px;
-        }
-        .product-card {
-            background-color: var(--tg-theme-secondary-bg-color);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .product-image {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-        .product-title {
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .product-price {
-            font-size: 16px;
-            color: var(--tg-theme-link-color);
-            font-weight: 500;
-        }
-        .btn {
-            background-color: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 8px;
-        }
+        body { font-family: sans-serif; background-color: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); margin: 0; padding: 16px; }
+        .header { text-align: center; margin-bottom: 24px; }
+        .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+        .store-name { font-size: 24px; font-weight: bold; margin: 8px 0; }
+        .product-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .product-card { background-color: var(--tg-theme-secondary-bg-color); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; }
+        .product-image { width: 100%; aspect-ratio: 1; border-radius: 8px; object-fit: cover; }
+        .btn { display: block; width: 100%; padding: 8px 0; border-radius: 8px; text-align: center; text-decoration: none; font-size: 14px; margin-top: 4px; }
+        .btn-buy { background-color: var(--tg-theme-button-color); color: white; }
+        .btn-download { background-color: #4CAF50; color: white; }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="LOGO.jpg" alt="Logo" class="logo">
-        <h1>Revit 3ddd</h1>
-        <p>Arxitektor Muhriddin Atelier</p>
+        <div class="store-name">Revit 3ddd</div>
+        <div class="store-desc">Arxitektor Muhriddin Atelier</div>
     </div>
     <div class="product-list" id="productList"></div>
-
     <script>
-        const products = [
-            { id: 1, name: "Ko'p qavatli turar-joy loyihasi", price: "$ bebaho", type: "paid", link: "https://t.me/CHIZMACHI1", image: "photo_2026-05-06_15-40-39.jpg" },
-            { id: 2, name: "Revit Professional Kursi", price: "$ bebaho", type: "paid", link: "https://t.me/CHIZMACHI1", image: "photo_2026-05-06_15-41-09.jpg" },
-            { id: 3, name: "Arxitektura Loyihasi 1", price: "$ bebaho", type: "paid", link: "https://t.me/CHIZMACHI1", image: "photo_2026-05-06_15-41-27.jpg" },
-            { id: 4, name: "Arxitektura Loyihasi 2", price: "$ bebaho", type: "paid", link: "https://t.me/CHIZMACHI1", image: "photo_2026-05-06_15-41-50.jpg" },
-            { id: 5, name: "Arxitektura Loyihasi 3", price: "$ bebaho", type: "paid", link: "https://t.me/CHIZMACHI1", image: "photo_2026-05-06_15-42-07.jpg" }
+                const products = [
+            {
+                id: 1,
+                name: "Ko'p qavatli turar-joy loyihasi",
+                price: "$ bebaho",
+                image: "photo_2026-05-06_15-40-39.jpg",
+                link: "https://t.me/CHIZMACHI1",
+                mod: "mod_2026-05-06_15-40-39"
+            },
+            {
+                id: 2,
+                name: "Revit Professional Kursi",
+                price: "$ bebaho",
+                image: "photo_2026-05-06_15-41-09.jpg",
+                link: "https://t.me/CHIZMACHI1",
+                mod: "mod_2026-05-06_15-41-09"
+            },
+            {
+                id: 3,
+                name: "Arxitektura Loyihasi 1",
+                price: "$ bebaho",
+                image: "photo_2026-05-06_15-41-27.jpg",
+                link: "https://t.me/CHIZMACHI1",
+                mod: "mod_2026-05-06_15-41-27"
+            },
+            {
+                id: 4,
+                name: "Arxitektura Loyihasi 2",
+                price: "$ bebaho",
+                image: "photo_2026-05-06_15-41-50.jpg",
+                link: "https://t.me/CHIZMACHI1",
+                mod: "mod_2026-05-06_15-41-50"
+            },
+            {
+                id: 5,
+                name: "Arxitektura Loyihasi 3",
+                price: "$ bebaho",
+                image: "photo_2026-05-06_15-42-07.jpg",
+                link: "https://t.me/CHIZMACHI1",
+                mod: "mod_2026-05-06_15-42-07"
+            }
         ];
-
         const list = document.getElementById('productList');
         products.forEach(p => {
             const card = document.createElement('div');
@@ -98,13 +84,15 @@
             card.innerHTML = '<img src="' + p.image + '" alt="' + p.name + '" class="product-image">' +
                 '<div class="product-title">' + p.name + '</div>' +
                 '<div class="product-price">' + p.price + '</div>' +
-                '<a href="' + p.link + '" class="btn">' + (p.type === 'free' ? 'Yuklab olish' : 'Sotib olish') + '</a>';
+                '<a href="' + p.mod + '" class="btn btn-download">Modelni yuklash</a>' +
+                '<a href="' + p.link + '" class="btn btn-buy">Sotib olish</a>';
             list.appendChild(card);
         });
-
-        // Telegram WebApp init
         const tg = window.Telegram.WebApp;
         tg.expand();
     </script>
 </body>
 </html>
+
+
+
