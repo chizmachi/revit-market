@@ -1,4 +1,3 @@
-<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -74,32 +73,16 @@
           </div>
           <div class="product-list" id="productList"></div>
 
+
           <script>
               const products = [
-{ id: 1, name: "Zamonaviy Villa BIM Modeli", price: "Bepul", type: "free", link: "https://t.me/chizmachi_robot" },
-      { id: 2, name: "Ko'p qavatli turar-joy loyihasi", price: "75,000 UZS", type: "paid", link: "https://t.me/chizmachi" },
-{ id: 3, name: "Revit Professional Kursi", price: "150,000 UZS", type: "paid", link: "https://t.me/chizmachi" },
-{ id: 4, name: "Dizayn Interer Elementlari", price: "Bepul", type: "free", link: "https://t.me/chizmachi_robot" }
+{ id: 1, name: "Zamonaviy Villa BIM Modeli", price: "Bepul", type: "free", link: "https://t.me/CHIZMACHI1" },
+      { id: 2, name: "Ko'p qavatli turar-joy loyihasi", price: "75,000 UZS", type: "paid", link: "https://t.me/CHIZMACHI1" },
+{ id: 3, name: "Revit Professional Kursi", price: "150,000 UZS", type: "paid", link: "https://t.me/CHIZMACHI1" },
+{ id: 4, name: "Dizayn Interer Elementlari", price: "Bepul", type: "free", link: "https://t.me/CHIZMACHI1" }
         ];
+
 
         const list = document.getElementById('productList');
         products.forEach(p => {
             const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-title">${p.name}</div>
-                <div class="product-price">${p.price}</div>
-                <a href="${p.link}" class="btn ${p.type === 'free' ? 'btn-secondary' : ''}" target="_blank">
-                    ${p.type === 'free' ? 'Yuklab olish' : 'Sotib olish'}
-                </a>
-            `;
-            list.appendChild(card);
-});
-
-        // Initialize Telegram Web App
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-        tg.ready();
-    </script>
-</body>
-</html>
